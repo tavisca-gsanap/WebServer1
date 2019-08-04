@@ -1,8 +1,8 @@
 ﻿namespace WebServer1
 {
-    public class FileSystemFactory
+    public static class FileSystemFactory
     {
-        public IFileSystem GetFileSystem(string fileSystem)
+        public static IFileSystem GetFileSystem(string fileSystem)
         {
             switch (fileSystem.ToLower())
             {
