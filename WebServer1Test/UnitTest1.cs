@@ -9,7 +9,7 @@ namespace WebServer1Test
     {
         LocalFileSystem _localFileSystem = new LocalFileSystem();
         [Fact]
-        public void FileExistsTest()
+        public void File_Exists_Test()
         {
             string physicalPath = @"C:\Users\gsanap\Desktop\"+"index.html";
             //@ can be used to avoid using \\ .

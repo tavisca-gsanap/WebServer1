@@ -11,7 +11,7 @@ namespace WebServer1
             WebApp webApp = new WebApp("firstWebsite", @"C:\Users\gsanap\Desktop\", "static", "local");
             string prefix = "http://aaaaaaaa.com/";
             webAppList.AddWebApp(prefix,webApp);
-            WebApp webApp1 = new WebApp("secondWebsite", @"C:\Users\gsanap\Desktop\status\", "static", "local");
+            WebApp webApp1 = new WebApp("secondWebsite", @"C:\Users\gsanap\Desktop\HtmlAssignments\Todo\", "static", "local");
             string prefix1 = "http://bbbbbbbb.com/";
             webAppList.AddWebApp(prefix1, webApp1);
             Server server = new Server(webAppList);
