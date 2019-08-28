@@ -88,17 +88,17 @@ namespace WebServer1
             server.Prefixes = new string[server.WebAppList._webAppList.Keys.Count];
         }
 
-        //public void RemoveWebApp(Server server, string prefix, WebApp webApp)
-        //{
-        //    if (server.Listener != null)
-        //    {
-        //        if (server.Listener.IsListening)
-        //        {
-        //            StopServer(server);
-        //        }
-        //    }
-        //    server.WebAppList.Re(prefix, webApp);
-        //    server.Prefixes = new string[server.WebAppList._webAppList.Keys.Count];
-        //}
+        public void RemoveWebApp(Server server, string prefix)
+        {
+            if (server.Listener != null)
+            {
+                if (server.Listener.IsListening)
+                {
+                    StopServer(server);
+                }
+            }
+            server.WebAppList.RemoveWebApp(prefix);
+            server.Prefixes = new string[server.WebAppList._webAppList.Keys.Count];
+        }
     }
 }

@@ -25,15 +25,15 @@ namespace WebServer1
                 //throw error that two webapps can't have same prefix
             }
         }
-        //public void RemoveWebApp(string prefix, WebApp webApp)
-        //{
-        //    if (!_webAppList.ContainsKey(prefix))
-        //        _webAppList.Add(prefix, webApp);
-        //    else
-        //    {
-        //        //throw error that two webapps can't have same prefix
-        //    }
-        //}
+        public void RemoveWebApp(string prefix)
+        {
+            if (_webAppList.ContainsKey(prefix))
+                _webAppList.Remove(prefix);
+            else
+            {
+                //throw error that two webapps can't have same prefix
+            }
+        }
     }
     
 }
