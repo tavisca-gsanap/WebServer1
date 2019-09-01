@@ -14,7 +14,6 @@ namespace WebServer1
             {
                 if (server.Listener.IsListening)
                 {
-                    //Console.WriteLine("Server {0} Already Running", server.Id);
                     Console.WriteLine("Server is Already Running");
                     return;
                 }
@@ -38,7 +37,6 @@ namespace WebServer1
         {
             if (server.Listener == null)
             {
-                //Console.WriteLine("Server{0} was never started", server.Id);
                 Console.WriteLine("Server was never started");
                 return;
             }
@@ -48,11 +46,9 @@ namespace WebServer1
                 {
                     server.Listener.Stop();
                     Console.WriteLine("Server Stopped");
-                    //Console.WriteLine("Server{0} Stopped", server.Id);
                 }
                 else
                 {
-                    //Console.WriteLine("Server{0} was stopped already", server.Id);
                     Console.WriteLine("Server was stopped already");
                 }
             }
@@ -61,7 +57,6 @@ namespace WebServer1
         private void StartListening(Server server)
         {
             server.Listener.Start();
-            //Console.WriteLine("Server {0} Started Listening on {1}", server.Id, string.Join(", ", server.Prefixes));
             Console.WriteLine("Server Started Listening on {0}", string.Join(", ", server.Prefixes));
             // Note: The GetContext method blocks while waiting for a request. 
             while (server.Listener.IsListening)
@@ -71,7 +66,6 @@ namespace WebServer1
                 Thread dispatcherThread = new Thread(new ThreadStart(() => dispatcher.Dispatch(server, context)));
                 dispatcherThread.Start();
             }
-            //Console.WriteLine("Server {0} Stopped Listening", server.Id);
             Console.WriteLine("Server Stopped Listening");
         }
 
@@ -85,7 +79,7 @@ namespace WebServer1
                 }
             }
             server.WebAppList.AddWebApp(prefix, webApp);
-            server.Prefixes = new string[server.WebAppList._webAppList.Keys.Count];
+            server.Prefixes[server.Prefixes.Length] = prefix;
         }
 
         public void RemoveWebApp(Server server, string prefix)
@@ -99,6 +93,12 @@ namespace WebServer1
             }
             server.WebAppList.RemoveWebApp(prefix);
             server.Prefixes = new string[server.WebAppList._webAppList.Keys.Count];
+            var j = 0;
+            foreach(var i in server.WebAppList._webAppList.Keys)
+            {
+                server.Prefixes[j]=i;
+                j++;
+            }
         }
     }
 }
