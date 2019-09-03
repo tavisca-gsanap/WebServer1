@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -48,6 +49,11 @@ namespace WebServer1
 
         private string ParseRequest(WebApp webApp, HttpListenerRequest request)
         {
+            if (request.HttpMethod.ToUpper() == "POST"){
+                var body = new StreamReader(request.InputStream).ReadToEnd();
+
+                return body;
+            }
             Uri url = request.Url;
             string filePath = url.AbsolutePath.Remove(0, 1);
             if (filePath.Equals("") || filePath.EndsWith('/'))
