@@ -12,6 +12,8 @@ namespace WebServer1
             {
                 case "static":
                     return new StaticFileHandler();
+                case "rest":
+                    return new RestApiHandler();
                 default:
                     throw new InvalidFileSystemException();
             }
